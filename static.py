@@ -18,10 +18,6 @@ STYLE = """
             padding-left: 16px;
             max-width: 450px;
         }
-        a {
-            padding-right: 16px;
-            padding-top: 16px;
-        }
     </style>
 </head>
 """
@@ -33,13 +29,9 @@ HEADER = """
 """
 
 LINKS = """
-<a href="{}" target="_blank">
-    Pull Request
-</a>
+<a href="{}" target="_blank">Pull Request</a>
 </br>
-<a href="{}" target="_blank">
-    Documentation
-</a>
+<a href="{}" target="_blank">Documentation</a>
 """
 
 DEFAULT = """
