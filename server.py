@@ -28,6 +28,8 @@ async def html(request):
     for change in changes:
         comp = change.get('component')
 
+        pull = change.get('pull_request')
+
         if comp is None:
             comp = 'homeassistant'
         elif comp == 'None':
@@ -38,10 +40,10 @@ async def html(request):
         else:
             doclink = change['doclink']
 
-        content += "<b>{}</b></br>".format(comp)
-        content += "<div><i>{}</i></br>".format(change['description'])
+        content += static.CHANGE_HEADER.format(id=pull, comp=comp)
+        content += static.CHANGE_DESCRIPTION.format(change['description'])
 
-        content += static.LINKS.format(change['prlink'], doclink)
+        content += static.CHANGE_LINKS.format(change['prlink'], doclink)
         content += "</div></br>"
 
     return web.Response(body=content, content_type="text/html")
