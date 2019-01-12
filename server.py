@@ -5,8 +5,7 @@ import static
 
 
 async def defaultsite(request):
-    """Serve this for root."""
-    print(request)
+    """Serve root."""
     content = static.STYLE
     content += static.DEFAULT
     return web.Response(body=content, content_type="text/html")
@@ -75,14 +74,14 @@ async def get_data(version):
 
     data = breaking_change(version)
 
-    print(data)
+    print("Request sucessful:", bool(data))
 
     if data:
-        vaulue = data.get('data')
+        value = data.get('data')
     else:
-        vaulue = None
+        value = None
 
-    return vaulue
+    return value
 
 if __name__ == "__main__":
     APP = web.Application()
