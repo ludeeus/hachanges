@@ -38,7 +38,7 @@ HEADER = """
 
 CARD = """
   <div class="row">
-    <div class="col s12 m6">
+    <div class="col s6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text" id="{pull}">
           <a href="#{pull}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
@@ -60,7 +60,7 @@ NO_CHANGES = """
     </div>
   </nav>
   <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <p>Breaking changes for {version} not found, try another.</p>
@@ -77,7 +77,7 @@ WRONG_VERSION = """
     </div>
   </nav>
     <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <p>Found "." in the version, use the minor version <b>only</b></br>
@@ -95,18 +95,23 @@ DEFAULT = """
     </div>
   </nav>
   <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">You need to add /%version% to the url</span></a>
-          <p>Examples:
-            https://hachanges.halfdecent.io/85</br>
-            https://hachanges.halfdecent.io/85/json
+          <span class="card-title">Welcome!</span></a>
+          <p>
+            This site can give you an overview of breaking cahnges in Home Assistant releases.</br>
+            To get breaking changes for a spesific release add the minor relase version at the end of the URL.
+            </br></br>
+            Generally a version are split in three "sections".</br>
+            <i>major</i>.<b>minor</b>.<i>patch</i> it is the <b>minor</b> part you need to use here.</br></br>
+            For version "0.85.0" this will be "85", examples:</br>
+            <a href="https://hachanges.halfdecent.io/85">https://hachanges.halfdecent.io/85</a></br>
+            <a href="https://hachanges.halfdecent.io/85/json">https://hachanges.halfdecent.io/85/json</a></br>
+            </br>
+            </br>
+            <i>This site is not created, developed, affiliated, supported, maintained or endorsed by Home Assistant.</i>
           </p>
-        </div>
-        <div class="card-action">
-          <a href="https://hachanges.halfdecent.io/85">/85</a>
-          <a href="https://hachanges.halfdecent.io/85/json}">/85/json</a>
         </div>
       </div>
     </div>

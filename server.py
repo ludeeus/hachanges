@@ -7,7 +7,9 @@ import static
 async def defaultsite(request):
     """Serve this for root."""
     print(request)
-    return web.Response(body=static.DEFAULT, content_type="text/html")
+    content = static.STYLE
+    content += static.DEFAULT
+    return web.Response(body=content, content_type="text/html")
 
 async def html(request):
     """Serve a HTML site."""
