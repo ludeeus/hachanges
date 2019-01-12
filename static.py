@@ -16,6 +16,12 @@ STYLE = """
         body {
             padding-left: 5px !important;
             font-family: roboto !important;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        main {
+          flex: 1 0 auto;
         }
         .fa {
             font-size:18px !important;
@@ -35,6 +41,7 @@ STYLE = """
 </head>
 """
 HEADER = """
+<header>
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes for version 0.{version}.X</a>
@@ -44,6 +51,7 @@ HEADER = """
       </ul>
     </div>
   </nav>
+</header>
 """
 
 CARD = """
@@ -73,14 +81,18 @@ NO_CHANGES = """
       </div>
     </div>
   </div>
+</main>
 """
 
 WRONG_VERSION = """
+<header>
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes</a>
     </div>
   </nav>
+</header>
+<main>
     <div class="row">
     <div class="col s12">
       <div class="card blue-grey darken-1">
@@ -91,14 +103,18 @@ WRONG_VERSION = """
       </div>
     </div>
   </div>
+</main>
 """
 
 DEFAULT = """
+<header>
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes</a>
     </div>
   </nav>
+</header>
+<main>
   <div class="row">
     <div class="col s12">
       <div class="card blue-grey darken-1">
@@ -113,14 +129,12 @@ DEFAULT = """
             For version "0.85.0" this will be "85", examples:</br>
             <a href="https://hachanges.halfdecent.io/85" style="color: #ffab40;">https://hachanges.halfdecent.io/85</a></br>
             <a href="https://hachanges.halfdecent.io/85/json" style="color: #ffab40;">https://hachanges.halfdecent.io/85/json</a></br>
-            </br>
-            </br>
-            <i>This site is not created, developed, affiliated, supported, maintained or endorsed by Home Assistant.</i>
           </p>
         </div>
       </div>
     </div>
   </div>
+</main>
 """
 
 EXTRA = """
@@ -134,4 +148,12 @@ EXTRA = """
       </div>
     </div>
   </div>
+"""
+
+FOOTER = """
+<footer class="page-footer blue-grey darken-1">
+  <div class="container" style="padding-bottom: 15px;;">
+    <i>This site is not created, developed, affiliated, supported, maintained or endorsed by Home Assistant.</i>
+  </div>
+</footer>
 """

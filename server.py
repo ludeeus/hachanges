@@ -11,6 +11,7 @@ async def defaultsite(request):
     print("Session from:", request.headers.get('X-FORWARDED-FOR', None))
     content = static.STYLE
     content += static.DEFAULT
+    content += static.FOOTER
     return web.Response(body=content, content_type="text/html")
 
 async def html(request):
@@ -20,6 +21,7 @@ async def html(request):
     version = request.match_info['version']
     if '.' in version:
         content += static.WRONG_VERSION.format(version=version)
+        content += static.FOOTER
         return web.Response(body=content, content_type="text/html")
 
     previous = int(version) - 1
@@ -27,6 +29,8 @@ async def html(request):
 
     content += static.HEADER.format(version=version, previous=previous,
                                     next=next_version)
+
+    content += '<main>'
 
     if version in extra_info.EXTRA:
         for item in extra_info.EXTRA[version]:
@@ -40,6 +44,7 @@ async def html(request):
         content += static.NO_CHANGES.format(version=version,
                                             previous=previous,
                                             next=next_version)
+        content += static.FOOTER
         return web.Response(body=content, content_type="text/html")
 
     for change in changes:
@@ -61,7 +66,8 @@ async def html(request):
                                       content=change['description'],
                                       docs=doclink,
                                       prlink=change['prlink'])
-
+    content += '</main>'
+    content += static.FOOTER
     return web.Response(body=content, content_type="text/html")
 
 async def json(request):
