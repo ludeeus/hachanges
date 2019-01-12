@@ -71,13 +71,7 @@ async def json(request):
     if '.' in version:
         return web.json_response({'error': 'Wrong version format.'})
 
-    if version in CACHE:
-        print("Loading data for", version, "from cache")
-        json_data = CACHE[version]
-    else:
-        json_data = await get_data(version)
-        print("Adding data for", version, "to cache")
-        CACHE[version] = json_data
+    json_data = await get_data(version)
 
     if not json_data:
         return web.json_response({'error': 'No changes found.'})
@@ -89,7 +83,14 @@ async def get_data(version):
     """Get version data."""
     print("Requesting breaking change for version", version)
 
-    data = breaking_change(version)
+    if version in CACHE:
+        print("Loading data for", version, "from cache")
+        data = CACHE[version]
+    else:
+        data = breaking_change(version)
+        if data:
+            print("Adding data for", version, "to cache")
+            CACHE[version] = data
 
     print("Request sucessful:", bool(data))
 
