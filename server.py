@@ -6,14 +6,14 @@ import static
 
 async def defaultsite(request):
     """Serve root."""
-    print("Session from:", request.remote)
+    print("Session from:", request.headers.get('X-FORWARDED-FOR',None))
     content = static.STYLE
     content += static.DEFAULT
     return web.Response(body=content, content_type="text/html")
 
 async def html(request):
     """Serve a HTML site."""
-    print("Session from:", request.remote)
+    print("Session from:", request.headers.get('X-FORWARDED-FOR',None))
     content = static.STYLE
     version = request.match_info['version']
     if '.' in version:
@@ -58,7 +58,7 @@ async def html(request):
 
 async def json(request):
     """Serve the response as JSON."""
-    print("Session from:", request.remote)
+    print("Session from:", request.headers.get('X-FORWARDED-FOR',None))
     version = request.match_info['version']
     if '.' in version:
         return web.json_response({'error': 'Wrong version format.'})
