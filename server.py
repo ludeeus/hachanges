@@ -4,6 +4,7 @@ from furystoolbox.cli.hass import breaking_change
 import static
 import extra_info
 
+CACHE = {}
 
 async def defaultsite(request):
     """Serve root."""
@@ -70,7 +71,11 @@ async def json(request):
     if '.' in version:
         return web.json_response({'error': 'Wrong version format.'})
 
-    json_data = await get_data(version)
+    if version in CACHE:
+        json_data = CACHE[version]
+    else:
+        json_data = await get_data(version)
+        CACHE[version] = json_data
 
     if not json_data:
         return web.json_response({'error': 'No changes found.'})
