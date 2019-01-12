@@ -106,8 +106,8 @@ DEFAULT = """
             Generally a version are split in three "sections".</br>
             <i>major</i>.<b>minor</b>.<i>patch</i> it is the <b>minor</b> part you need to use here.</br></br>
             For version "0.85.0" this will be "85", examples:</br>
-            <a href="https://hachanges.halfdecent.io/85">https://hachanges.halfdecent.io/85</a></br>
-            <a href="https://hachanges.halfdecent.io/85/json">https://hachanges.halfdecent.io/85/json</a></br>
+            <a href="https://hachanges.halfdecent.io/85" style="color: #ffab40;">https://hachanges.halfdecent.io/85</a></br>
+            <a href="https://hachanges.halfdecent.io/85/json" style="color: #ffab40;">https://hachanges.halfdecent.io/85/json</a></br>
             </br>
             </br>
             <i>This site is not created, developed, affiliated, supported, maintained or endorsed by Home Assistant.</i>
