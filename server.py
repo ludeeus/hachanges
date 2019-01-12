@@ -11,19 +11,19 @@ async def defaultsite(request):
 
 async def html(request):
     """Serve a HTML site."""
+    content = static.STYLE
     version = request.match_info['version']
     if '.' in version:
-        return web.Response(body=static.WRONG_VERSION,
-                            content_type="text/html")
+        content += static.WRONG_VERSION.format(version)
+        return web.Response(body=content, content_type="text/html")
 
     changes = await get_data(version)
 
     if not changes:
-        return web.Response(body=static.NO_CHANGES.format(version),
-                            content_type="text/html")
+        content += static.NO_CHANGES.format(version=version)
+        return web.Response(body=content, content_type="text/html")
 
-    content = static.STYLE
-    content += static.HEADER.format(request.match_info['version'])
+    content += static.HEADER.format(version)
 
     for change in changes:
         comp = change.get('component')
@@ -40,11 +40,9 @@ async def html(request):
         else:
             doclink = change['doclink']
 
-        content += static.CHANGE_HEADER.format(id=pull, comp=comp)
-        content += static.CHANGE_DESCRIPTION.format(change['description'])
-
-        content += static.CHANGE_LINKS.format(change['prlink'], doclink)
-        content += "</div></br>"
+        content += static.CARD.format(pull=pull, title=comp,
+                                      content=change['description'],
+                                      docs=doclink)
 
     return web.Response(body=content, content_type="text/html")
 
