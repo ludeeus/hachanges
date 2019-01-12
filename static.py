@@ -40,6 +40,10 @@ STYLE = """
         .fa {
             font-size:12px !important;
         }
+        code {
+            font-family: roboto !important;
+            font-size: 14px !important;
+        }
     </style>
 </head>
 """
