@@ -44,7 +44,8 @@ async def html(request):
 
         content += static.CARD.format(pull=pull, title=comp,
                                       content=change['description'],
-                                      docs=doclink)
+                                      docs=doclink,
+                                      prlink=change['prlink'])
 
     return web.Response(body=content, content_type="text/html")
 
