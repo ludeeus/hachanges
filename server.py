@@ -2,18 +2,19 @@
 from aiohttp import web
 from furystoolbox.cli.hass import breaking_change
 import static
+import extra_info
 
 
 async def defaultsite(request):
     """Serve root."""
-    print("Session from:", request.headers.get('X-FORWARDED-FOR',None))
+    print("Session from:", request.headers.get('X-FORWARDED-FOR', None))
     content = static.STYLE
     content += static.DEFAULT
     return web.Response(body=content, content_type="text/html")
 
 async def html(request):
     """Serve a HTML site."""
-    print("Session from:", request.headers.get('X-FORWARDED-FOR',None))
+    print("Session from:", request.headers.get('X-FORWARDED-FOR', None))
     content = static.STYLE
     version = request.match_info['version']
     if '.' in version:
@@ -23,6 +24,15 @@ async def html(request):
     previous = int(version) - 1
     next_version = int(version) + 1
 
+    content += static.HEADER.format(version=version, previous=previous,
+                                    next=next_version)
+
+    if version in extra_info.EXTRA:
+        for item in extra_info.EXTRA[version]:
+            title = item['title']
+            body = item['content']
+            content += static.EXTRA.format(title=title, content=body)
+
     changes = await get_data(version)
 
     if not changes:
@@ -30,9 +40,6 @@ async def html(request):
                                             previous=previous,
                                             next=next_version)
         return web.Response(body=content, content_type="text/html")
-
-    content += static.HEADER.format(version=version, previous=previous,
-                                    next=next_version)
 
     for change in changes:
         comp = change.get('component')
@@ -58,7 +65,7 @@ async def html(request):
 
 async def json(request):
     """Serve the response as JSON."""
-    print("Session from:", request.headers.get('X-FORWARDED-FOR',None))
+    print("Session from:", request.headers.get('X-FORWARDED-FOR', None))
     version = request.match_info['version']
     if '.' in version:
         return web.json_response({'error': 'Wrong version format.'})

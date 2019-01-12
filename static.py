@@ -64,15 +64,6 @@ CARD = """
 """
 
 NO_CHANGES = """
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{previous}">Previous release</a></li>
-        <li><a href="{next}">Next release</a></li>
-      </ul>
-    </div>
-  </nav>
   <div class="row">
     <div class="col s12">
       <div class="card blue-grey darken-1">
@@ -126,6 +117,19 @@ DEFAULT = """
             </br>
             <i>This site is not created, developed, affiliated, supported, maintained or endorsed by Home Assistant.</i>
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+"""
+
+EXTRA = """
+  <div class="row">
+    <div class="col s6">
+      <div class="card red darken-4">
+        <div class="card-content white-text" id="{title}">
+          <a href="#{title}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
+          <p>{content}</p>
         </div>
       </div>
     </div>
