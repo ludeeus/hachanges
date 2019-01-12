@@ -153,8 +153,15 @@ EXTRA = """
           <a href="#{title}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
           <p>{content}</p>
         </div>
+        {links}
       </div>
     </div>
+  </div>
+"""
+
+EXTRA_LINK = """
+  <div class="card-action">
+    <a href="{link}" {target}>More info</a>
   </div>
 """
 

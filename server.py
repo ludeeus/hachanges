@@ -36,7 +36,20 @@ async def html(request):
         for item in extra_info.EXTRA[version]:
             title = item['title']
             body = item['content']
-            content += static.EXTRA.format(title=title, content=body)
+            more_info = item['more_info']
+            more_info_type = item['more_info_type']
+            if more_info is not None:
+                link = more_info
+                if more_info_type != 'int':
+                    target = 'target="_blank"'
+                else:
+                    target = ''
+                links = static.EXTRA_LINK.format(link=link, target=target)
+            else:
+                links = ''
+
+            content += static.EXTRA.format(title=title, content=body,
+                                           links=links)
 
     changes = await get_data(version)
 
