@@ -45,8 +45,8 @@ CARD = """
           <p>{content}</p>
         </div>
         <div class="card-action">
-          <a href="{docs}">Documentation</a>
-          <a href="{pull}">Pull request</a>
+          <a href="{docs}" target="_blank">Documentation</a>
+          <a href="{pull}" target="_blank">Pull request</a>
         </div>
       </div>
     </div>
