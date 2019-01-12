@@ -9,6 +9,7 @@ Example: 85
 
 STYLE = """
 <head>
+    <title>Breaking changes</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -22,16 +23,19 @@ STYLE = """
             max-width: 450px !important;
             font-style: italic !important;
             font-size: 14px !important;
+            font-family: roboto !important;
         }
         .description a {
             font-style: normal !important;
             font-size: 12px !important;
+            font-family: roboto !important;
         }
         .header a {
             text-decoration: none !important;
             color: black !important;
             font-weight: bold !important;
             font-size: 17px !important;
+            font-family: roboto !important;
         }
         .fa {
             font-size:12px !important;
