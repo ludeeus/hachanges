@@ -9,7 +9,7 @@ STYLE = """
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
        @media only screen and (max-device-width : 1024px) {
-            .row .col.s6 {
+            main {
                 width: 100%;
             }
         }
@@ -22,6 +22,8 @@ STYLE = """
         }
         main {
           flex: 1 0 auto;
+          width: 50%;
+          margin: auto;
         }
         .fa {
             font-size:18px !important;
@@ -36,6 +38,12 @@ STYLE = """
         }
         .card-title {
             color: white;
+        }
+        footer {
+            margin-right: 5px;
+        }
+        header {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -56,7 +64,7 @@ HEADER = """
 
 CARD = """
   <div class="row">
-    <div class="col s6">
+    <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text" id="{pull}">
           <a href="#{pull}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
@@ -139,7 +147,7 @@ DEFAULT = """
 
 EXTRA = """
   <div class="row">
-    <div class="col s6">
+    <div class="col s12">
       <div class="card red darken-4">
         <div class="card-content white-text" id="{title}">
           <a href="#{title}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
