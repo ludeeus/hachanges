@@ -7,6 +7,11 @@ STYLE = """
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
+       @media only screen and (max-device-width : 1024px) {
+            .row .col.s6 {
+                width: 100%;
+            }
+        }
         body {
             padding-left: 5px !important;
             font-family: roboto !important;
