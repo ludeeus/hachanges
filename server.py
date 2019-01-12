@@ -16,16 +16,22 @@ async def html(request):
     content = static.STYLE
     version = request.match_info['version']
     if '.' in version:
-        content += static.WRONG_VERSION.format(version)
+        content += static.WRONG_VERSION.format(version=version)
         return web.Response(body=content, content_type="text/html")
+
+    previous = int(version) - 1
+    next_version = int(version) + 1
 
     changes = await get_data(version)
 
     if not changes:
-        content += static.NO_CHANGES.format(version=version)
+        content += static.NO_CHANGES.format(version=version,
+                                            previous=previous,
+                                            next=next_version)
         return web.Response(body=content, content_type="text/html")
 
-    content += static.HEADER.format(version)
+    content += static.HEADER.format(version=version, previous=previous,
+                                    next=next_version)
 
     for change in changes:
         comp = change.get('component')

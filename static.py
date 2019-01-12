@@ -36,7 +36,11 @@ STYLE = """
 HEADER = """
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes for version 0.{}.X</a>
+      <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes for version 0.{version}.X</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{previous}">Previous release</a></li>
+        <li><a href="{next}">Next release</a></li>
+      </ul>
     </div>
   </nav>
 """
@@ -62,6 +66,10 @@ NO_CHANGES = """
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{previous}">Previous release</a></li>
+        <li><a href="{next}">Next release</a></li>
+      </ul>
     </div>
   </nav>
   <div class="row">
