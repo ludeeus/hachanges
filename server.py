@@ -72,9 +72,11 @@ async def json(request):
         return web.json_response({'error': 'Wrong version format.'})
 
     if version in CACHE:
+        print("Loading data for", version, "from cache")
         json_data = CACHE[version]
     else:
         json_data = await get_data(version)
+        print("Adding data for", version, "to cache")
         CACHE[version] = json_data
 
     if not json_data:
