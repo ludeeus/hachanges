@@ -93,7 +93,10 @@ async def get_data(version):
         print("Loading data for", version, "from cache")
         data = CACHE[version]
     else:
-        data = breaking_change(version)
+        try:
+            data = breaking_change(version)
+        except:
+            data = None
         if data:
             print("Adding data for", version, "to cache")
             CACHE[version] = data
