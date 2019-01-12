@@ -14,26 +14,27 @@ STYLE = """
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <style>
         body {
-            padding-left: 5px;
+            padding-left: 5px !important;
             font-family: roboto !important;
         }
         .description {
-            padding-left: 16px;
-            max-width: 450px;
-            font-style: italic;
+            padding-left: 16px !important;
+            max-width: 450px !important;
+            font-style: italic !important;
+            font-size: 14px !important;
         }
         .description a {
-            font-style: normal;
-            font-size: 12px;
+            font-style: normal !important;
+            font-size: 12px !important;
         }
         .header a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            font-size: 17px;
+            text-decoration: none !important;
+            color: black !important;
+            font-weight: bold !important;
+            font-size: 17px !important;
         }
         .fa {
-            font-size:12px;
+            font-size:12px !important;
         }
     </style>
 </head>
