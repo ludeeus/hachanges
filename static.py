@@ -129,10 +129,10 @@ DEFAULT = """
         <div class="card-content white-text">
           <span class="card-title">Welcome!</span></a>
           <p>
-            This site can give you an overview of breaking cahnges in Home Assistant releases.</br>
-            To get breaking changes for a spesific release add the minor relase version at the end of the URL.
+            This site can give you an overview of breaking changes in Home Assistant releases.</br>
+            To get breaking changes for a specific release add the minor relase version at the end of the URL.
             </br></br>
-            Generally a version are split in three "sections".</br>
+            Generally a version is split into three "sections".</br>
             <i>major</i>.<b>minor</b>.<i>patch</i> it is the <b>minor</b> part you need to use here.</br></br>
             For version "0.85.0" this will be "85", examples:</br>
             <a href="https://hachanges.halfdecent.io/85" style="color: #ffab40;">https://hachanges.halfdecent.io/85</a></br>
