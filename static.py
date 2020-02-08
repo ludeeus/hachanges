@@ -8,6 +8,10 @@ STYLE = """
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
+      :root {
+        --base-color: #6200EE;
+        --accent-color: #03DAC6;
+      }
        @media only screen and (max-device-width : 1024px) {
             main {
                 width: 100%;
@@ -24,26 +28,51 @@ STYLE = """
           flex: 1 0 auto;
           width: 50%;
           margin: auto;
+          margin-top: 80px;
+          margin-bottom: 80px;
+        }
+        h4 {
+          margin-left: 8px;
         }
         .fa {
             font-size:18px !important;
+        }
+        a {
+          color: var(--accent-color);
         }
         code {
             font-family: roboto !important;
             font-size: 14px !important;
         }
         nav {
-            background-color: #546e7a !important;
-            margin-bottom: 32px;
+            background-color: var(--base-color);
+            left: 0;
         }
         .card-title {
             color: white;
         }
         footer {
-            margin-right: 5px;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+        }
+        .footer {
+            margin-left: 8px;
+        }
+        .nav {
+            margin-top: 12px;
+            display: flex;
         }
         header {
-            margin-right: 5px;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: -21px;
+            z-index: 2;
+        }
+        .page-footer, .card {
+          background-color: var(--base-color);
         }
     </style>
 </head>
@@ -51,12 +80,8 @@ STYLE = """
 HEADER = """
 <header>
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes for version 0.{version}.X</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{previous}">Previous release</a></li>
-        <li><a href="{next}">Next release</a></li>
-      </ul>
+    <div class="nav">
+      <h4>Breaking changes for version 0.{version}.X</h4>
     </div>
   </nav>
 </header>
@@ -65,7 +90,7 @@ HEADER = """
 CARD = """
   <div class="row">
     <div class="col s12">
-      <div class="card blue-grey darken-1">
+      <div class="card">
         <div class="card-content white-text" id="{pull}">
           <a href="#{pull}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
           <p>{content}</p>
@@ -82,7 +107,7 @@ CARD = """
 NO_CHANGES = """
   <div class="row">
     <div class="col s12">
-      <div class="card blue-grey darken-1">
+      <div class="card">
         <div class="card-content white-text">
           <p>Breaking changes for {version} not found, try another.</p>
         </div>
@@ -95,15 +120,15 @@ NO_CHANGES = """
 WRONG_VERSION = """
 <header>
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes</a>
+    <div class="nav">
+      <h4>Breaking changes</h4>
     </div>
   </nav>
 </header>
 <main>
     <div class="row">
     <div class="col s12">
-      <div class="card blue-grey darken-1">
+      <div class="card">
         <div class="card-content white-text">
           <p>Found "." in the version, use the minor version <b>only</b></br>
           Example: 85</p>
@@ -117,15 +142,15 @@ WRONG_VERSION = """
 DEFAULT = """
 <header>
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;Breaking changes</a>
+    <div class="nav">
+      <h4>Breaking changes</h4>
     </div>
   </nav>
 </header>
 <main>
   <div class="row">
     <div class="col s12">
-      <div class="card blue-grey darken-1">
+      <div class="card">
         <div class="card-content white-text">
           <span class="card-title">Welcome!</span></a>
           <p>
@@ -134,9 +159,9 @@ DEFAULT = """
             </br></br>
             Generally a version is split into three "sections".</br>
             <i>major</i>.<b>minor</b>.<i>patch</i> it is the <b>minor</b> part you need to use here.</br></br>
-            For version "0.85.0" this will be "85", examples:</br>
-            <a href="https://hachanges.halfdecent.io/85" style="color: #ffab40;">https://hachanges.halfdecent.io/85</a></br>
-            <a href="https://hachanges.halfdecent.io/85/json" style="color: #ffab40;">https://hachanges.halfdecent.io/85/json</a></br>
+            For version "0.105.0" this will be "105", examples:</br>
+            <a href="https://hachanges.halfdecent.io/105">https://hachanges.halfdecent.io/105</a></br>
+            <a href="https://hachanges.halfdecent.io/105/json">https://hachanges.halfdecent.io/105/json</a></br>
           </p>
         </div>
       </div>
@@ -148,7 +173,7 @@ DEFAULT = """
 EXTRA = """
   <div class="row">
     <div class="col s12">
-      <div class="card red darken-4">
+      <div class="card">
         <div class="card-content white-text" id="{title}">
           <a href="#{title}"><span class="card-title"><i class="fa fa-link"></i> {title}</span></a>
           <p>{content}</p>
@@ -166,8 +191,8 @@ EXTRA_LINK = """
 """
 
 FOOTER = """
-<footer class="page-footer blue-grey darken-1">
-  <div class="container" style="padding-bottom: 15px;;">
+<footer class="page-footer">
+  <div class="footer" style="padding-bottom: 15px;;">
     <i>This site is not created, developed, affiliated, supported, maintained or endorsed by Home Assistant.</i>
   </div>
 </footer>

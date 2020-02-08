@@ -1,9 +1,8 @@
-FROM python:3.7-slim
+FROM ludeeus/devcontainer:integration
 
 WORKDIR /app
-
 COPY . /app
 
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
 
-CMD ["python", "-u", "server.py"]
+CMD ["python3", "-u", "server.py"]
