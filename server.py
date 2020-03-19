@@ -11,7 +11,7 @@ CACHE = {}
 
 def get_changes(number: str):
     comp_base = "https://www.home-assistant.io/components/"
-    pull_base = "https://github.com/home-assistant/home-assistant/pull/"
+    pull_base = "https://github.com/home-assistant/core/pull/"
     github = Github(os.environ["GHTOKEN"])
     repo = github.get_repo("home-assistant/home-assistant.io")
     posts = repo.get_contents("source/_posts", "current")
