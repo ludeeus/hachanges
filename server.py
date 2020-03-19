@@ -43,7 +43,10 @@ def get_changes(number: str):
             this = {}
             try:
                 pull = str(change)
-                pull = pull.split("home-assistant/home-assistant/pull/")[1]
+                if "home-assistant/home-assistant/pull/" in pull:
+                    pull = pull.split("home-assistant/home-assistant/pull/")[1]
+                else:
+                    pull = pull.split("home-assistant/core/pull/")[1]
                 pull = pull.split('"')[0]
             except:
                 pull = None
