@@ -1,11 +1,11 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-	"image": "ludeeus/devcontainer:integration",
+	"image": "ludeeus/devcontainer:python",
 	"context": "..",
 	"appPort": [
 		"9999:9999"
 	],
-	"postCreateCommand": "python3 -m pip install -r requirements.txt",
+	"postCreateCommand": "python -m pip install -r requirements.txt",
 	"runArgs": [
 		"-v",
 		"${env:HOME}${env:USERPROFILE}/.ssh:/tmp/.ssh"

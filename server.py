@@ -12,7 +12,8 @@ CACHE = {}
 def get_changes(number: str):
     comp_base = "https://www.home-assistant.io/components/"
     pull_base = "https://github.com/home-assistant/core/pull/"
-    github = Github(os.environ["GHTOKEN"])
+    #github = Github(os.environ["GHTOKEN"])
+    github = Github("97e2a9057e4dbecbe71c056e272eb4b847ac19d9")
     repo = github.get_repo("home-assistant/home-assistant.io")
     posts = repo.get_contents("source/_posts", "current")
     this_post = None
@@ -34,7 +35,7 @@ def get_changes(number: str):
     changes["data"] = []
     control = []
     for line in url_data:
-        if "(breaking change)" in line:
+        if "(breaking change)" in line or  "(breaking-change)" in line:
             raw_changes.append(line)
     for change in raw_changes:
         if change[0:3] == "<p>":
@@ -48,7 +49,8 @@ def get_changes(number: str):
                 else:
                     pull = pull.split("home-assistant/core/pull/")[1]
                 pull = pull.split('"')[0]
-            except:
+            except Exception as e:
+                print(e)
                 pull = None
             if pull not in control and pull is not None:
                 prlink = "{}{}".format(pull_base, pull)
@@ -60,7 +62,8 @@ def get_changes(number: str):
                     else:
                         component = component.split(f"{splitbase}current/components/")[1]
                     component = component.split('">')[0]
-                except:
+                except Exception as e:
+                    print(e)
                     component = None
                 doclink = "{}{}".format(comp_base, component)
                 if len(change.split("<li>")) == 1:
