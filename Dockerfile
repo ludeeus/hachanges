@@ -1,4 +1,4 @@
-FROM ludeeus/devcontainer:integration
+FROM ludeeus/devcontainer:python
 
 WORKDIR /app
 COPY . /app

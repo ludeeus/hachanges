@@ -9,8 +9,8 @@ STYLE = """
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
       :root {
-        --base-color: #6200EE;
-        --accent-color: #03DAC6;
+        --base-color: #1c1c1c;
+        --accent-color: #ff9800;
       }
        @media only screen and (max-device-width : 1024px) {
             main {
@@ -23,6 +23,7 @@ STYLE = """
             display: flex;
             min-height: 100vh;
             flex-direction: column;
+            background-color: #111111;
         }
         main {
           flex: 1 0 auto;
@@ -30,6 +31,7 @@ STYLE = """
           margin: auto;
           margin-top: 80px;
           margin-bottom: 80px;
+          background-color: #111111;
         }
         h4 {
           margin-left: 8px;
@@ -51,6 +53,9 @@ STYLE = """
         .card-title {
             color: white;
         }
+        .card .card-action {
+            border-radius: 0 0 10px 10px !important;
+        }
         footer {
             position: fixed;
             width: 100%;
@@ -63,6 +68,9 @@ STYLE = """
         .nav {
             margin-top: 12px;
             display: flex;
+        }
+        .card {
+          border-radius: 10px;
         }
         header {
             position: fixed;
@@ -159,9 +167,10 @@ DEFAULT = """
             </br></br>
             Generally a version is split into three "sections".</br>
             <i>major</i>.<b>minor</b>.<i>patch</i> it is the <b>minor</b> part you need to use here.</br></br>
-            For version "0.105.0" this will be "105", examples:</br>
-            <a href="https://hachanges.halfdecent.io/105">https://hachanges.halfdecent.io/105</a></br>
-            <a href="https://hachanges.halfdecent.io/105/json">https://hachanges.halfdecent.io/105/json</a></br>
+            For version "0.114.0" this will be "114", examples:</br>
+            <a href="https://hachanges.halfdecent.io/114">https://hachanges.halfdecent.io/114</a></br>
+            <a href="https://hachanges.halfdecent.io/114/json">https://hachanges.halfdecent.io/114/json</a></br></br>
+            <i>Minimum version needed is 0.113.0</i>
           </p>
         </div>
       </div>
