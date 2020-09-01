@@ -1,5 +1,5 @@
 {
-  "name": "NestJS lab",
+  "name": "hachanges dev",
   "image": "ludeeus/container:frontend",
   "context": "..",
   "appPort": 3000,
