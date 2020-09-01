@@ -1,5 +1,0 @@
-Flask
-furystoolbox
-aiohttp
-requests
-beautifulsoup4

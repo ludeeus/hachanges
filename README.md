@@ -4,11 +4,11 @@
 2. Build
 
 ```bash
-sudo docker build --tag=hachanges .
+docker build --tag=hachanges .
 ```
 
 3. Run
 
 ```bash
-sudo docker run -d --name hachanges -p 9999:9999 -e GHTOKEN=dfkjhs783huf hachanges
+docker run -d --name hachanges -p 3000:3000 hachanges
 ```

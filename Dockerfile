@@ -1,11 +1,11 @@
-FROM ludeeus/devcontainer:python
+FROM ludeeus/container:frontend
 
-WORKDIR /app
 COPY . /app
+WORKDIR /app
 
-RUN python3 -m pip install -r requirements.txt
+RUN cd /app/client && yarn install && yarn run build && cd /app && yarn install && yarn run build
 
-CMD ["python3", "-u", "server.py"]
+ENTRYPOINT ["yarn", "run", "start:prod"]
 
 HEALTHCHECK --interval=5m --timeout=3s \
-  CMD curl -f http://localhost:9999/ || exit 1
+  CMD curl -f http://localhost:3000/ || exit 1

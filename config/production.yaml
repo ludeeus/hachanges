@@ -1,0 +1,2 @@
+db:
+  database: '/data/breakingchanges.sqlite'

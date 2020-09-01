@@ -1,0 +1,7 @@
+server:
+  port: 3000
+
+db:
+  type: 'sqlite'
+  database: 'breakingchanges.sqlite'
+  synchronize: true
