@@ -16,5 +16,5 @@ ENTRYPOINT ["yarn", "run", "start:prod"]
 
 LABEL org.opencontainers.image.source = "https://github.com/ludeeus/hachanges"
 
-HEALTHCHECK --interval=5m --timeout=3s \
-  CMD curl -f http://localhost:3000/ || exit 1
+HEALTHCHECK --interval=1m --timeout=10s \
+  CMD curl --fail -sSL http://127.0.0.1:3000/110/json
