@@ -34,18 +34,6 @@ class BreakingChangesEntry extends LitElement {
     </div>`;
   }
 
-  private _changePage(page: string): void {
-    this.dispatchEvent(
-      new CustomEvent('set-page', {
-        detail: {
-          page,
-        },
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
   static get styles() {
     return Style;
   }
