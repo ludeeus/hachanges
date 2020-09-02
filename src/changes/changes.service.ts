@@ -36,15 +36,17 @@ export class ChangesService {
     }
 
     changes = await this.changeRepository.getChanges(versions[0], versions[1]);
-    const changeVersions = changes.map(change => change.homeassistant);
 
-    range(versions[0], versions[1]).forEach(async version => {
-      if (changeVersions.includes(version)) {
-        this.logger.log(`Serving 0.${version}.0 from database`);
-      } else {
-        await this.generateService.generateChanges(version);
-      }
-    });
+    if (changes.length === 0) {
+      const changeVersions = changes.map(change => change.homeassistant);
+      range(versions[0], versions[1]).forEach(async version => {
+        if (!changeVersions.includes(version)) {
+          await this.generateService.generateChanges(version);
+        }
+      });
+    }
+
+    this.logger.log(`Serving ${versions}`);
     return changes;
   }
 }
