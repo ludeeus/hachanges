@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  Logger,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ChangeRepository } from './change.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -110,10 +106,14 @@ export class GenerateService {
     try {
       await change.save();
     } catch (error) {
+      if (error.code === 'SQLITE_CONSTRAINT') {
+        this.logger.log(`#${change.pull} allready exsist, skipping.`);
+        return;
+      }
       this.logger.error(
-        `Failed to create new change. Data: ${JSON.stringify(
+        `Failed to create new change. Input: ${JSON.stringify(
           element.innerHTML,
-        )}`,
+        )}, Output: ${JSON.stringify(change)}`,
         error.stack,
       );
     }
@@ -155,10 +155,14 @@ export class GenerateService {
     try {
       await change.save();
     } catch (error) {
+      if (error.code === 'SQLITE_CONSTRAINT') {
+        this.logger.log(`#${change.pull} allready exsist, skipping.`);
+        return;
+      }
       this.logger.error(
-        `Failed to create new change. Data: ${JSON.stringify(
+        `Failed to create new change. Input: ${JSON.stringify(
           element.innerHTML,
-        )}`,
+        )}, Output: ${JSON.stringify(change)}`,
         error.stack,
       );
     }

@@ -29,9 +29,9 @@ export class ChangesService {
       versions.push(Number(id));
     }
 
-    if (range(versions[0], versions[1]).length > 10) {
+    if (range(versions[0], versions[1]).length > 20) {
       throw new ImATeapotException(
-        'Ratelimit: You can only get 10 versions at a time',
+        'Ratelimit: You can only get 20 versions at a time',
       );
     }
 

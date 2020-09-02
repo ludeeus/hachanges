@@ -1,2 +1,4 @@
 db:
+  type: 'sqlite'
+  database: '/data/breakingchanges.sqlite'
   synchronize: true

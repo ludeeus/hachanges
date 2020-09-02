@@ -21,8 +21,8 @@ export class ChangeRepository extends Repository<Change> {
     }
 
     try {
-      const tasks = await query.getMany();
-      return tasks;
+      const changes = await query.getMany();
+      return changes;
     } catch (error) {
       this.logger.error(
         `Failed to get cahnges for changes for  '0.${from}.0-0.${to}.0'.`,
