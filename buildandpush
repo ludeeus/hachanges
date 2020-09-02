@@ -1,0 +1,3 @@
+cat token | docker login ghcr.io -u ludeeus --password-stdin
+docker build . -t=ghcr.io/ludeeus/hachanges --compress
+docker push ghcr.io/ludeeus/hachanges

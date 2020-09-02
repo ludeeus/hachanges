@@ -5,3 +5,4 @@ client/yarn.lock
 dist
 .devcontainer
 *.sqlite
+token

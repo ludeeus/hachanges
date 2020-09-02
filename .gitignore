@@ -12,6 +12,7 @@ yarn-error.log*
 lerna-debug.log*
 yarn.lock
 client/yarn.lock
+token
 
 # OS
 .DS_Store

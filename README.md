@@ -4,11 +4,11 @@
 2. Build
 
 ```bash
-docker build --tag=hachanges .
+docker build --tag=ghcr.io/ludeeus/hachanges .
 ```
 
 3. Run
 
 ```bash
-docker run -d --name hachanges -p 3000:3000 hachanges
+docker run -d --name hachanges -p 3000:3000 ghcr.io/ludeeus/hachanges
 ```
