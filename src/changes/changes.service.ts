@@ -1,4 +1,4 @@
-import { Injectable, Logger, ImATeapotException } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ChangeRepository } from './change.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Change } from './change.entity';
@@ -27,12 +27,6 @@ export class ChangesService {
     } else {
       versions.push(Number(id));
       versions.push(Number(id));
-    }
-
-    if (range(versions[0], versions[1]).length > 20) {
-      throw new ImATeapotException(
-        'Ratelimit: You can only get 20 versions at a time',
-      );
     }
 
     changes = await this.changeRepository.getChanges(versions[0], versions[1]);
