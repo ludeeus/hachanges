@@ -3,7 +3,14 @@ FROM ludeeus/container:frontend
 COPY . /app
 WORKDIR /app
 
-RUN cd /app/client && yarn install && yarn run build && cd /app && yarn install && yarn run build
+RUN \
+  apk add curl \
+  && cd /app/client \
+  && yarn install \
+  && yarn run build \
+  && cd /app \
+  && yarn install \
+  && yarn run build
 
 ENTRYPOINT ["yarn", "run", "start:prod"]
 
