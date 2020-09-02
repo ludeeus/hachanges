@@ -23574,6 +23574,9 @@
                 ? html `0.${change.homeassistant}`
                 : ''}
                       ${change.title}
+                      ${change.homeassistant >= 113
+                ? html `(${change.integration})`
+                : ''}
                     </h2>
                     <p>${change.description}</p>
                   </div>

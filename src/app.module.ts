@@ -5,15 +5,10 @@ import { ChangesModule } from './changes/changes.module';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
-const rootPath =
-  process.env.NODE_ENV === 'production'
-    ? join(__dirname, '..', '..', 'client', 'build')
-    : join(__dirname, '..', 'client', 'build');
-
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath,
+      rootPath: join(__dirname, '..', '..', 'client', 'build'),
       exclude: ['/*/json'],
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
