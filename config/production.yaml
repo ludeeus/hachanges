@@ -1,5 +1,5 @@
 db:
   type: 'postgres'
-  host: 'db01-do-user-7093920-0.a.db.ondigitalocean.com'
+  host: 'private-db01-do-user-7093920-0.a.db.ondigitalocean.com'
   port: '25060'
   database: 'hachanges'
