@@ -29,7 +29,6 @@ class BreakingChangesEntry extends LitElement {
               <a href="/114/json">https://hachanges.halfdecent.io/114/json</a>
             </li>
           </p>
-          <i>Minimum version needed is 0.113.0</i>
         </div>
       </paper-card>
     </div>`;
