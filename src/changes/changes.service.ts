@@ -29,7 +29,9 @@ export class ChangesService {
       versions.push(Number(id));
     }
 
-    changes = await this.changeRepository.getChanges(versions[0], versions[1]);
+    changes = await this.changeRepository.getChanges(
+      range(versions[0], versions[1]),
+    );
 
     if (changes.length === 0) {
       const changeVersions = changes.map(change => change.homeassistant);

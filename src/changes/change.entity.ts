@@ -1,7 +1,16 @@
-import { BaseEntity, Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ObjectIdColumn,
+} from 'typeorm';
 
 @Entity()
 export class Change extends BaseEntity {
+  @ObjectIdColumn()
+  _id: string;
+
   @PrimaryGeneratedColumn()
   pull_request: number;
 

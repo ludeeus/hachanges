@@ -13,6 +13,8 @@ export class GenerateService {
     private changeRepository: ChangeRepository,
   ) {}
 
+  private generated = [];
+
   private logger = new Logger('GenerateService');
 
   private async _getUrlFromSitemap(): Promise<any> {
@@ -34,7 +36,6 @@ export class GenerateService {
   }
 
   private async _handleResponse(response: string, id: number) {
-    this.logger.log(`Generating changes for 0.${id}.0`);
     const dom = await new JSDOM(response);
 
     const elements = dom.window.document.querySelectorAll('details');
@@ -47,7 +48,6 @@ export class GenerateService {
   }
 
   private async _handleLegacyResponse(response: string, id: number) {
-    this.logger.log(`Generating changes for 0.${id}.0`);
     const dom = await new JSDOM(response);
 
     const elements = dom.window.document.querySelectorAll('li');
@@ -104,7 +104,7 @@ export class GenerateService {
     }
 
     try {
-      await change.save();
+      await this.changeRepository.save(change);
     } catch (error) {
       if (error.code === 'SQLITE_CONSTRAINT') {
         this.logger.log(`#${change.pull} allready exsist, skipping.`);
@@ -169,18 +169,37 @@ export class GenerateService {
   }
 
   async generateChanges(id: number): Promise<void> {
+    let body;
     const sitemap = await this._getUrlFromSitemap();
     if (!sitemap[id]) {
       this.logger.error(`No release found for '${id}'`);
       return;
     }
 
-    const response = await fetch(sitemap[id]);
-    const body = await response.text();
-    if (id >= 113) {
-      await this._handleResponse(body, id);
-    } else {
-      await this._handleLegacyResponse(body, id);
+    if (id in this.generated) {
+      return;
+    }
+
+    this.logger.log(`Generating changes for 0.${id}.0`);
+    this.generated.push(id);
+
+    try {
+      const response = await fetch(sitemap[id]);
+      body = await response.text();
+    } catch (err) {
+      this.generated = this.generated.filter(release => release !== id);
+      return;
+    }
+
+    try {
+      if (id >= 113) {
+        await this._handleResponse(body, id);
+      } else {
+        await this._handleLegacyResponse(body, id);
+      }
+    } catch (err) {
+      this.generated = this.generated.filter(release => release !== id);
+      return;
     }
   }
 }

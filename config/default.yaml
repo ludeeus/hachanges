@@ -2,4 +2,6 @@ server:
   port: 3000
 
 db:
+  type: 'mongodb'
+  url: 'mongodb://mongo/breakingchanges'
   synchronize: false
