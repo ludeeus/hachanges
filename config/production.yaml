@@ -1,2 +1,2 @@
 db:
-  synchronize: false
+  url: 'mongodb://mongo/breakingchanges'

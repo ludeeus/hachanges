@@ -1,5 +1,2 @@
 db:
-  url: 'mongodb://157.245.70.252/breakingchanges'
-  synchronize: true
-  username: ludeeus
-  password: Password1!
+  url: 'mongodb://167.71.66.233:27701/breakingchanges'

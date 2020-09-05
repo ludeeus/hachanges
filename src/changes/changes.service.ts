@@ -29,6 +29,12 @@ export class ChangesService {
       versions.push(Number(id));
     }
 
+    if (versions[0] > versions[1]) {
+      // 0 should never be higher than 1
+      this.logger.log(`${versions[0]} is newer than ${versions[1]}, skipping`);
+      return changes;
+    }
+
     changes = await this.changeRepository.getChanges(
       range(versions[0], versions[1]),
     );
@@ -47,6 +53,9 @@ export class ChangesService {
     } else {
       this.logger.log(`Serving range ${versions[0]} - ${versions[1]}`);
     }
-    return changes;
+    return changes.map(change => {
+      delete change['_id'];
+      return change;
+    });
   }
 }

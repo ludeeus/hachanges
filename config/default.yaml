@@ -3,5 +3,3 @@ server:
 
 db:
   type: 'mongodb'
-  url: 'mongodb://mongo/breakingchanges'
-  synchronize: false
