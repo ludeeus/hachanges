@@ -8,6 +8,7 @@ import { Style } from './style';
 @customElement('breakingchanges-entry')
 class BreakingChangesEntry extends LitElement {
   protected render(): TemplateResult | void {
+    const origin = window.location.origin;
     return html`<div class="content">
       <div class="header"><h1>Welcome!</h1></div>
       <paper-card>
@@ -24,9 +25,9 @@ class BreakingChangesEntry extends LitElement {
           </p>
           <p>
             For version "0.114.0" this will be "114", examples:
-            <li><a href="/114">https://hachanges.halfdecent.io/114</a></li>
+            <li><a href="/114">${origin}/114</a></li>
             <li>
-              <a href="/114/json">https://hachanges.halfdecent.io/114/json</a>
+              <a href="/114/json">${origin}/114/json</a>
             </li>
           </p>
         </div>

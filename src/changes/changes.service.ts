@@ -42,7 +42,11 @@ export class ChangesService {
       });
     }
 
-    this.logger.log(`Serving ${versions}`);
+    if (versions[0] == versions[1]) {
+      this.logger.log(`Serving ${versions[0]}`);
+    } else {
+      this.logger.log(`Serving range ${versions[0]} - ${versions[1]}`);
+    }
     return changes;
   }
 }
